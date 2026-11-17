@@ -85,7 +85,6 @@ proxies:
   type: http
   udp: true
 - name: "06-http-605k"
-  password: None
   port: 9002
   server: "84.17.47.123"
   skip-cert-verify: true
@@ -93,7 +92,6 @@ proxies:
   type: http
   udp: true
 - name: "07-http-585k"
-  password: None
   port: 9002
   server: "84.17.47.148"
   skip-cert-verify: true
