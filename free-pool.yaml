@@ -2,7 +2,30 @@ mixed-port: 7897
 allow-lan: false
 mode: rule
 log-level: info
+tcp-concurrent: true
+unified-delay: true
+geodata-mode: true
+geodata-loader: standard
+dns:
+  enable: true
+  ipv6: false
+  nameserver:
+  - 223.5.5.5
+  - 119.29.29.29
+  proxy-server-nameserver:
+  - 223.5.5.5
+  - 119.29.29.29
 proxies:
+- auth: HATATEAYA
+  obfs: salamander
+  obfs-password: HATATEAYA
+  password: HATATEAYA
+  port: 8964
+  server: 77.90.15.183
+  skip-cert-verify: true
+  sni: ganlanc.at
+  type: hysteria2
+  name: 01-hysteria2-165k
 - type: hysteria
   server: 5.83.129.90
   port: 54177
@@ -16,17 +39,28 @@ proxies:
   up: '11'
   down: '55'
   auth-str: dongtaiwang.com
-  name: 01-hysteria-216k
-- auth: HATATEAYA
-  obfs: salamander
-  obfs-password: HATATEAYA
-  password: HATATEAYA
-  port: 8964
-  server: 77.90.15.183
+  name: 02-hysteria-216k
+- alpn:
+  - h3
+  auth-str: dongtaiwang.com
+  down: 55 Mbps
+  port: 24667
+  protocol: udp
+  server: 62.210.124.132
   skip-cert-verify: true
-  sni: ganlanc.at
-  type: hysteria2
-  name: 02-hysteria2-165k
+  sni: bing.com
+  type: hysteria
+  up: 11 Mbps
+  name: 03-hysteria-100k
+- type: anytls
+  server: sdf65h46wr.df6h451rh.xin
+  port: 443
+  password: 0324fbc29561
+  tls: true
+  servername: images.ctfassets.net
+  sni: images.ctfassets.net
+  skip-cert-verify: true
+  name: 04-anytls-102k
 - client-fingerprint: firefox
   grpc-opts:
     grpc-mode: gun
@@ -39,59 +73,46 @@ proxies:
   type: vless
   udp: true
   uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
-  name: 03-vless-144k
-- alpn:
-  - h3
-  auth-str: dongtaiwang.com
-  down: 55 Mbps
-  port: 24667
-  protocol: udp
-  server: 62.210.124.132
-  skip-cert-verify: true
-  sni: bing.com
-  type: hysteria
-  up: 11 Mbps
-  name: 04-hysteria-100k
-- type: anytls
-  server: sdf65h46wr.df6h451rh.xin
-  port: 443
-  password: 0324fbc29561
-  tls: true
-  servername: images.ctfassets.net
-  sni: images.ctfassets.net
-  skip-cert-verify: true
-  name: 05-anytls-102k
+  name: 05-vless-144k
 proxy-groups:
 - name: PROXY
   type: select
   proxies:
-  - 01-hysteria-216k
-  - 02-hysteria2-165k
-  - 03-vless-144k
-  - 04-hysteria-100k
-  - 05-anytls-102k
+  - 01-hysteria2-165k
+  - 02-hysteria-216k
+  - 03-hysteria-100k
+  - 04-anytls-102k
+  - 05-vless-144k
   - Auto
   - Fastest
   - LB
 - name: Fastest
   type: fallback
-  url: http://www.gstatic.com/generate_204
-  interval: 90
+  url: https://www.google.com/generate_204
+  interval: 120
   proxies: &id001
-  - 01-hysteria-216k
-  - 02-hysteria2-165k
-  - 03-vless-144k
-  - 04-hysteria-100k
-  - 05-anytls-102k
+  - 01-hysteria2-165k
+  - 02-hysteria-216k
+  - 03-hysteria-100k
+  - 04-anytls-102k
+  - 05-vless-144k
 - name: Auto
   type: url-test
-  url: http://www.gstatic.com/generate_204
-  interval: 180
+  url: https://www.google.com/generate_204
+  interval: 300
   proxies: *id001
-  tolerance: 30
+  tolerance: 50
 - name: LB
   type: load-balance
-  url: http://www.gstatic.com/generate_204
-  interval: 180
+  url: https://www.google.com/generate_204
+  interval: 300
   proxies: *id001
   strategy: round-robin
+rules:
+- IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+- IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+- IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+- IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+- GEOSITE,cn,DIRECT
+- GEOIP,CN,DIRECT
+- MATCH,PROXY
