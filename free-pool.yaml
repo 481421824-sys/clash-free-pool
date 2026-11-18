@@ -3,6 +3,20 @@ allow-lan: false
 mode: rule
 log-level: info
 proxies:
+- type: hysteria
+  server: 5.83.129.90
+  port: 54177
+  password: dongtaiwang.com
+  tls: true
+  servername: apple.com
+  sni: apple.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  up: '11'
+  down: '55'
+  auth-str: dongtaiwang.com
+  name: 01-hysteria-216k
 - auth: HATATEAYA
   obfs: salamander
   obfs-password: HATATEAYA
@@ -12,20 +26,7 @@ proxies:
   skip-cert-verify: true
   sni: ganlanc.at
   type: hysteria2
-  name: 01-hysteria2-158k
-- server: vps3.nemnogogo.com
-  port: 443
-  type: vless
-  uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
-  tls: true
-  servername: vps3.nemnogogo.com
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-mode: gun
-    grpc-service-name: mobile.api.Event
-  udp: true
-  name: 02-vless-64k
+  name: 02-hysteria2-165k
 - client-fingerprint: firefox
   grpc-opts:
     grpc-mode: gun
@@ -38,24 +39,37 @@ proxies:
   type: vless
   udp: true
   uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
-  name: 03-vless-57k
-- port: 443
-  server: 172.64.68.89
+  name: 03-vless-144k
+- alpn:
+  - h3
+  auth-str: dongtaiwang.com
+  down: 55 Mbps
+  port: 24667
+  protocol: udp
+  server: 62.210.124.132
   skip-cert-verify: true
-  sub_tag: R002-260618
+  sni: bing.com
+  type: hysteria
+  up: 11 Mbps
+  name: 04-hysteria-100k
+- type: anytls
+  server: sdf65h46wr.df6h451rh.xin
+  port: 443
+  password: 0324fbc29561
   tls: true
-  type: http
-  udp: true
-  x-toolall-mihomo: true
-  name: 04-http-78k
+  servername: images.ctfassets.net
+  sni: images.ctfassets.net
+  skip-cert-verify: true
+  name: 05-anytls-102k
 proxy-groups:
 - name: PROXY
   type: select
   proxies:
-  - 01-hysteria2-158k
-  - 02-vless-64k
-  - 03-vless-57k
-  - 04-http-78k
+  - 01-hysteria-216k
+  - 02-hysteria2-165k
+  - 03-vless-144k
+  - 04-hysteria-100k
+  - 05-anytls-102k
   - Auto
   - Fastest
   - LB
@@ -64,10 +78,11 @@ proxy-groups:
   url: http://www.gstatic.com/generate_204
   interval: 90
   proxies: &id001
-  - 01-hysteria2-158k
-  - 02-vless-64k
-  - 03-vless-57k
-  - 04-http-78k
+  - 01-hysteria-216k
+  - 02-hysteria2-165k
+  - 03-vless-144k
+  - 04-hysteria-100k
+  - 05-anytls-102k
 - name: Auto
   type: url-test
   url: http://www.gstatic.com/generate_204
