@@ -31,20 +31,62 @@ dns:
   - 223.5.5.5
   - 119.29.29.29
 proxies:
-- port: 9002
-  server: 84.17.47.124
+- type: vless
+  network: grpc
+  server: 201.24.116.192
+  port: 443
+  uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
+  servername: vps3.nemnogogo.com
+  tls: true
+  udp: true
+  client-fingerprint: firefox
+  grpc-opts:
+    grpc-mode: gun
+    grpc-service-name: mobile.api.Event
+  name: 01-vless-2233k
+- type: hysteria
+  server: 62.210.124.132
+  port: 24667
+  password: dongtaiwang.com
+  tls: true
+  servername: bing.com
+  sni: bing.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  up: '11'
+  down: '55'
+  auth-str: dongtaiwang.com
+  name: 02-hysteria-1171k
+- port: 443
+  server: 172.64.69.89
   skip-cert-verify: true
   tls: true
   type: http
-  udp: true
-  name: 02-http-971k
-- port: 9002
-  server: 158.173.154.5
+  name: 03-http-1605k
+- port: 443
+  server: 172.64.68.89
   skip-cert-verify: true
+  sni: 172.64.68.89
   tls: true
   type: http
-  udp: true
-  name: 03-http-922k
+  name: 04-http-1526k
+- type: vmess
+  network: http
+  server: 179.43.140.24
+  port: 42831
+  uuid: a925a98c-ad7a-40c6-9fdf-130a1de69416
+  alterId: 0
+  cipher: auto
+  delay: 1486
+  http-opts:
+    headers:
+      Host:
+      - down-cdn.dingtalk.com
+    method: GET
+    path:
+    - /3x
+  name: 05-vmess-979k
 - type: vless
   network: xhttp
   server: 201.34.142.108
@@ -56,40 +98,17 @@ proxies:
   xhttp-opts:
     mode: auto
     path: /assets/nlrelay01/
-  name: 04-vless-921k
-- server: 191.217.206.147
-  port: 7443
-  type: vless
-  uuid: 0b22812b-4a79-42b1-93ec-5b157b0f2f7f
-  tls: true
-  reality-opts:
-    public-key: NmMggGv5jmohnMmZytnLdenxmpNwa4P9E2PZW1EV8go
-    short-id: 5e25bf4462660ed8
-  servername: pl-origin.krabvpn.pro
-  client-fingerprint: firefox
-  network: xhttp
-  xhttp-opts:
-    path: /assets/7ae15be966a6bce1f00fa96a
-    host: pl-origin.krabvpn.pro
-    mode: auto
-  udp: true
-  name: 05-vless-884k
-- port: 23856
-  server: 51.159.225.196
-  skip-cert-verify: true
-  tls: true
-  type: http
-  udp: true
-  name: 06-http-876k
+  name: 06-vless-768k
 proxy-groups:
 - name: PROXY
   type: select
   proxies:
-  - 04-vless-921k
-  - 06-http-876k
-  - 03-http-922k
-  - 02-http-971k
-  - 05-vless-884k
+  - 01-vless-2233k
+  - 02-hysteria-1171k
+  - 03-http-1605k
+  - 04-http-1526k
+  - 05-vmess-979k
+  - 06-vless-768k
   - Fastest
   - Auto
   - LB
@@ -98,32 +117,35 @@ proxy-groups:
   url: https://www.google.com/generate_204
   interval: 120
   proxies:
-  - 04-vless-921k
-  - 06-http-876k
-  - 03-http-922k
-  - 02-http-971k
-  - 05-vless-884k
+  - 01-vless-2233k
+  - 02-hysteria-1171k
+  - 03-http-1605k
+  - 04-http-1526k
+  - 05-vmess-979k
+  - 06-vless-768k
 - name: Auto
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 04-vless-921k
-  - 06-http-876k
-  - 03-http-922k
-  - 02-http-971k
-  - 05-vless-884k
+  - 01-vless-2233k
+  - 02-hysteria-1171k
+  - 03-http-1605k
+  - 04-http-1526k
+  - 05-vmess-979k
+  - 06-vless-768k
   tolerance: 50
 - name: LB
   type: load-balance
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 04-vless-921k
-  - 06-http-876k
-  - 03-http-922k
-  - 02-http-971k
-  - 05-vless-884k
+  - 01-vless-2233k
+  - 02-hysteria-1171k
+  - 03-http-1605k
+  - 04-http-1526k
+  - 05-vmess-979k
+  - 06-vless-768k
   strategy: round-robin
 rules:
 - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
