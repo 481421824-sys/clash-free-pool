@@ -31,13 +31,6 @@ dns:
   - 223.5.5.5
   - 119.29.29.29
 proxies:
-- cipher: aes-256-gcm
-  password: itzvpn@321
-  port: 8388
-  server: 57.131.27.21
-  type: ss
-  udp: true
-  name: 01-ss-1261k
 - port: 9002
   server: 84.17.47.124
   skip-cert-verify: true
@@ -92,12 +85,11 @@ proxy-groups:
 - name: PROXY
   type: select
   proxies:
-  - 01-ss-1261k
-  - 02-http-971k
-  - 03-http-922k
   - 04-vless-921k
-  - 05-vless-884k
   - 06-http-876k
+  - 03-http-922k
+  - 02-http-971k
+  - 05-vless-884k
   - Fastest
   - Auto
   - LB
@@ -106,35 +98,32 @@ proxy-groups:
   url: https://www.google.com/generate_204
   interval: 120
   proxies:
-  - 01-ss-1261k
-  - 02-http-971k
-  - 03-http-922k
   - 04-vless-921k
-  - 05-vless-884k
   - 06-http-876k
+  - 03-http-922k
+  - 02-http-971k
+  - 05-vless-884k
 - name: Auto
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 01-ss-1261k
-  - 02-http-971k
-  - 03-http-922k
   - 04-vless-921k
-  - 05-vless-884k
   - 06-http-876k
+  - 03-http-922k
+  - 02-http-971k
+  - 05-vless-884k
   tolerance: 50
 - name: LB
   type: load-balance
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 01-ss-1261k
-  - 02-http-971k
-  - 03-http-922k
   - 04-vless-921k
-  - 05-vless-884k
   - 06-http-876k
+  - 03-http-922k
+  - 02-http-971k
+  - 05-vless-884k
   strategy: round-robin
 rules:
 - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
