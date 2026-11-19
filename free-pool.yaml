@@ -90,15 +90,15 @@ proxy-groups:
 - name: PROXY
   type: select
   proxies:
-  - Fastest
-  - Auto
-  - LB
   - 01-ss-1261k
   - 02-http-971k
   - 03-http-922k
   - 04-vless-921k
   - 05-vless-884k
   - 06-http-876k
+  - Fastest
+  - Auto
+  - LB
 - name: Fastest
   type: fallback
   url: https://www.google.com/generate_204
