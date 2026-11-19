@@ -4,6 +4,21 @@ mode: rule
 log-level: info
 tcp-concurrent: true
 unified-delay: true
+find-process-mode: 'off'
+sniffer:
+  enable: true
+  sniff:
+    TLS:
+      ports:
+      - 443
+    HTTP:
+      ports:
+      - 80
+      - 8080-8880
+  skip-domain:
+  - Mijia Cloud
+  - +.push.apple.com
+keep-alive-interval: 30
 dns:
   enable: true
   ipv6: false
@@ -14,64 +29,73 @@ dns:
   - 223.5.5.5
   - 119.29.29.29
 proxies:
-- type: vless
-  network: grpc
-  server: 201.24.116.192
-  port: 443
-  uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
-  servername: vps3.nemnogogo.com
-  tls: true
-  udp: true
-  client-fingerprint: firefox
-  grpc-opts:
-    grpc-mode: gun
-    grpc-service-name: mobile.api.Event
-  name: 01-vless-2640k
-- password: 3a17ce52-4547-45aa-9820-a7d03ad5faca
-  port: 443
-  server: 45.86.74.193
-  skip-cert-verify: false
-  sni: media.embrofree.org
-  type: hysteria2
-  name: 02-hysteria2-1952k
-- server: 81.200.152.153
-  port: 443
-  type: vless
-  uuid: 955d8dc7-5e3b-40ac-b2bb-bd8aa20fc7e6
-  tls: true
-  flow: xtls-rprx-vision
-  reality-opts:
-    public-key: t2iopaZn9-fADmIi4taXbGUV6wFTFku4eGi8KISuZAM
-  servername: gmbasdasd.wey-land.net
-  client-fingerprint: edge
-  network: tcp
-  udp: true
-  name: 03-vless-1048k
-- type: anytls
-  server: sdf65h46wr.df6h451rh.xin
-  port: 443
-  password: 0324fbc29561
-  tls: true
-  servername: images.ctfassets.net
-  sni: images.ctfassets.net
-  skip-cert-verify: true
-  name: 04-anytls-934k
 - cipher: aes-256-gcm
   password: itzvpn@321
   port: 8388
   server: 57.131.27.21
   type: ss
   udp: true
-  name: 05-ss-940k
+  name: 01-ss-1261k
+- port: 9002
+  server: 84.17.47.124
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+  name: 02-http-971k
+- port: 9002
+  server: 158.173.154.5
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+  name: 03-http-922k
+- type: vless
+  network: xhttp
+  server: 201.34.142.108
+  port: 443
+  uuid: 4777d90d-265b-4927-a0d1-63f36ed1421c
+  tls: true
+  udp: true
+  client-fingerprint: chrome
+  xhttp-opts:
+    mode: auto
+    path: /assets/nlrelay01/
+  name: 04-vless-921k
+- server: 191.217.206.147
+  port: 7443
+  type: vless
+  uuid: 0b22812b-4a79-42b1-93ec-5b157b0f2f7f
+  tls: true
+  reality-opts:
+    public-key: NmMggGv5jmohnMmZytnLdenxmpNwa4P9E2PZW1EV8go
+    short-id: 5e25bf4462660ed8
+  servername: pl-origin.krabvpn.pro
+  client-fingerprint: firefox
+  network: xhttp
+  xhttp-opts:
+    path: /assets/7ae15be966a6bce1f00fa96a
+    host: pl-origin.krabvpn.pro
+    mode: auto
+  udp: true
+  name: 05-vless-884k
+- port: 23856
+  server: 51.159.225.196
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+  name: 06-http-876k
 proxy-groups:
 - name: PROXY
   type: select
   proxies:
-  - 01-vless-2640k
-  - 02-hysteria2-1952k
-  - 03-vless-1048k
-  - 04-anytls-934k
-  - 05-ss-940k
+  - 01-ss-1261k
+  - 02-http-971k
+  - 03-http-922k
+  - 04-vless-921k
+  - 05-vless-884k
+  - 06-http-876k
   - Auto
   - Fastest
   - LB
@@ -79,23 +103,36 @@ proxy-groups:
   type: fallback
   url: https://www.google.com/generate_204
   interval: 120
-  proxies: &id001
-  - 01-vless-2640k
-  - 02-hysteria2-1952k
-  - 03-vless-1048k
-  - 04-anytls-934k
-  - 05-ss-940k
+  proxies:
+  - 01-ss-1261k
+  - 02-http-971k
+  - 03-http-922k
+  - 04-vless-921k
+  - 05-vless-884k
+  - 06-http-876k
 - name: Auto
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
-  proxies: *id001
+  proxies:
+  - 01-ss-1261k
+  - 02-http-971k
+  - 03-http-922k
+  - 04-vless-921k
+  - 05-vless-884k
+  - 06-http-876k
   tolerance: 50
 - name: LB
   type: load-balance
   url: https://www.google.com/generate_204
   interval: 300
-  proxies: *id001
+  proxies:
+  - 01-ss-1261k
+  - 02-http-971k
+  - 03-http-922k
+  - 04-vless-921k
+  - 05-vless-884k
+  - 06-http-876k
   strategy: round-robin
 rules:
 - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
