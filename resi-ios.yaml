@@ -1,0 +1,289 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: warning
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+proxies:
+- name: 住宅-01-KR
+  type: socks5
+  server: 121.169.46.116
+  port: 1090
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+- name: 住宅-02-US
+  type: socks5
+  server: 184.182.240.12
+  port: 4145
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+- name: 住宅-03-US
+  type: socks5
+  server: 184.178.172.5
+  port: 15303
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+- name: 住宅-04-US
+  type: socks5
+  server: 184.185.2.12
+  port: 4145
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+- name: 住宅-05-US
+  type: socks5
+  server: 70.166.167.55
+  port: 57745
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+- name: 住宅-06-US
+  type: socks5
+  server: 98.188.47.150
+  port: 4145
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+- name: 住宅-07-US
+  type: socks5
+  server: 24.249.199.4
+  port: 4145
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+- name: 住宅-08-US
+  type: socks5
+  server: 184.178.172.14
+  port: 4145
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+- name: 已购-Astound
+  type: socks5
+  server: 89.47.127.47
+  port: 5432
+  username: xsaie
+  password: mohkde2n
+  udp: false
+  skip-cert-verify: true
+- server: 103.88.243.142
+  port: 11592
+  type: hysteria2
+  password: 41edb44c8e
+  auth: 41edb44c8e
+  sni: srv-17e124.21freedom.net
+  skip-cert-verify: true
+  name: 01-hysteria2-2245k
+- alpn:
+  - h2
+  client-fingerprint: firefox
+  grpc-opts:
+    grpc-mode: gun
+    grpc-service-name: mobile.api.Event
+  network: grpc
+  port: 443
+  server: vps3.nemnogogo.com
+  servername: vps3.nemnogogo.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
+  name: 02-vless-1643k
+- server: srv-17e124.21freedom.net
+  port: 11592
+  type: hysteria2
+  password: 41edb44c8e
+  auth: 41edb44c8e
+  sni: srv-17e124.21freedom.net
+  skip-cert-verify: true
+  name: 03-hysteria2-1249k
+- type: hysteria
+  server: 62.210.124.132
+  port: 24667
+  password: dongtaiwang.com
+  tls: true
+  servername: bing.com
+  sni: bing.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  up: '11'
+  down: '55'
+  auth-str: dongtaiwang.com
+  name: 06-hysteria-156k
+proxy-groups:
+- name: 住宅优先
+  type: select
+  proxies:
+  - 住宅-01-KR
+  - 住宅-02-US
+  - 住宅-03-US
+  - 住宅-04-US
+  - 住宅-05-US
+  - 住宅-06-US
+  - 住宅-07-US
+  - 住宅-08-US
+  - 已购-Astound
+  - DIRECT
+- name: 住宅轮换
+  type: select
+  proxies:
+  - 住宅-01-KR
+  - 住宅-02-US
+  - 住宅-03-US
+  - 住宅-04-US
+  - 住宅-05-US
+  - 住宅-06-US
+  - 住宅-07-US
+  - 住宅-08-US
+  - DIRECT
+- name: PROXY
+  type: select
+  proxies:
+  - 01-hysteria2-2245k
+  - 02-vless-1643k
+  - 03-hysteria2-1249k
+  - 06-hysteria-156k
+  - Fastest
+  - 住宅优先
+  - 住宅轮换
+  - 住宅-01-KR
+  - 住宅-02-US
+  - 住宅-03-US
+  - 住宅-04-US
+  - 住宅-05-US
+  - 住宅-06-US
+  - 住宅-07-US
+  - 住宅-08-US
+- name: Fastest
+  type: fallback
+  url: https://www.google.com/generate_204
+  interval: 120
+  proxies:
+  - 01-hysteria2-2245k
+  - 02-vless-1643k
+  - 03-hysteria2-1249k
+  - 06-hysteria-156k
+rules:
+- DOMAIN-SUFFIX,openai.com,住宅优先
+- DOMAIN-SUFFIX,chatgpt.com,住宅优先
+- DOMAIN-SUFFIX,chat.com,住宅优先
+- DOMAIN-SUFFIX,sora.com,住宅优先
+- DOMAIN-SUFFIX,oaistatic.com,住宅优先
+- DOMAIN-SUFFIX,oaiusercontent.com,住宅优先
+- DOMAIN-SUFFIX,anthropic.com,住宅优先
+- DOMAIN-SUFFIX,claude.ai,住宅优先
+- DOMAIN-SUFFIX,claudeusercontent.com,住宅优先
+- DOMAIN-SUFFIX,x.com,住宅优先
+- DOMAIN-SUFFIX,twitter.com,住宅优先
+- DOMAIN-SUFFIX,twimg.com,住宅优先
+- DOMAIN-SUFFIX,t.co,住宅优先
+- DOMAIN-SUFFIX,perplexity.ai,住宅优先
+- DOMAIN-SUFFIX,grok.com,住宅优先
+- DOMAIN-SUFFIX,gemini.google.com,住宅优先
+- DOMAIN-SUFFIX,aistudio.google.com,住宅优先
+- IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+- IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+- IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+- IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+- IP-CIDR6,::1/128,DIRECT,no-resolve
+- DOMAIN-SUFFIX,cn,DIRECT
+- DOMAIN-SUFFIX,edu.cn,DIRECT
+- DOMAIN-SUFFIX,gov.cn,DIRECT
+- DOMAIN-SUFFIX,baidu.com,DIRECT
+- DOMAIN-SUFFIX,bdstatic.com,DIRECT
+- DOMAIN-SUFFIX,bdimg.com,DIRECT
+- DOMAIN-SUFFIX,qq.com,DIRECT
+- DOMAIN-SUFFIX,tencent.com,DIRECT
+- DOMAIN-SUFFIX,gtimg.com,DIRECT
+- DOMAIN-SUFFIX,weixin.com,DIRECT
+- DOMAIN-SUFFIX,wechat.com,DIRECT
+- DOMAIN-SUFFIX,qlogo.cn,DIRECT
+- DOMAIN-SUFFIX,qpic.cn,DIRECT
+- DOMAIN-SUFFIX,servicewechat.com,DIRECT
+- DOMAIN-SUFFIX,weixinbridge.com,DIRECT
+- DOMAIN-SUFFIX,taobao.com,DIRECT
+- DOMAIN-SUFFIX,tmall.com,DIRECT
+- DOMAIN-SUFFIX,alipay.com,DIRECT
+- DOMAIN-SUFFIX,alibaba.com,DIRECT
+- DOMAIN-SUFFIX,alicdn.com,DIRECT
+- DOMAIN-SUFFIX,aliyun.com,DIRECT
+- DOMAIN-SUFFIX,aliyuncs.com,DIRECT
+- DOMAIN-SUFFIX,alipayobjects.com,DIRECT
+- DOMAIN-SUFFIX,jd.com,DIRECT
+- DOMAIN-SUFFIX,360buyimg.com,DIRECT
+- DOMAIN-SUFFIX,163.com,DIRECT
+- DOMAIN-SUFFIX,126.net,DIRECT
+- DOMAIN-SUFFIX,netease.com,DIRECT
+- DOMAIN-SUFFIX,bilibili.com,DIRECT
+- DOMAIN-SUFFIX,bilivideo.com,DIRECT
+- DOMAIN-SUFFIX,biliapi.net,DIRECT
+- DOMAIN-SUFFIX,hdslb.com,DIRECT
+- DOMAIN-SUFFIX,zhihu.com,DIRECT
+- DOMAIN-SUFFIX,zhimg.com,DIRECT
+- DOMAIN-SUFFIX,weibo.com,DIRECT
+- DOMAIN-SUFFIX,sina.com.cn,DIRECT
+- DOMAIN-SUFFIX,sinaimg.cn,DIRECT
+- DOMAIN-SUFFIX,douyin.com,DIRECT
+- DOMAIN-SUFFIX,douyinvod.com,DIRECT
+- DOMAIN-SUFFIX,douyincdn.com,DIRECT
+- DOMAIN-SUFFIX,byteimg.com,DIRECT
+- DOMAIN-SUFFIX,pstatp.com,DIRECT
+- DOMAIN-SUFFIX,bytedance.com,DIRECT
+- DOMAIN-SUFFIX,toutiao.com,DIRECT
+- DOMAIN-SUFFIX,ixigua.com,DIRECT
+- DOMAIN-SUFFIX,kuaishou.com,DIRECT
+- DOMAIN-SUFFIX,xiaohongshu.com,DIRECT
+- DOMAIN-SUFFIX,xhscdn.com,DIRECT
+- DOMAIN-SUFFIX,meituan.com,DIRECT
+- DOMAIN-SUFFIX,dianping.com,DIRECT
+- DOMAIN-SUFFIX,ele.me,DIRECT
+- DOMAIN-SUFFIX,ctrip.com,DIRECT
+- DOMAIN-SUFFIX,qunar.com,DIRECT
+- DOMAIN-SUFFIX,12306.cn,DIRECT
+- DOMAIN-SUFFIX,qcloud.com,DIRECT
+- DOMAIN-SUFFIX,myqcloud.com,DIRECT
+- DOMAIN-SUFFIX,ksyun.com,DIRECT
+- DOMAIN-SUFFIX,qiniudns.com,DIRECT
+- DOMAIN-SUFFIX,bcebos.com,DIRECT
+- DOMAIN-SUFFIX,volccdn.com,DIRECT
+- DOMAIN-SUFFIX,zjcdn.com,DIRECT
+- DOMAIN-SUFFIX,huawei.com,DIRECT
+- DOMAIN-SUFFIX,hicloud.com,DIRECT
+- DOMAIN-SUFFIX,xiaomi.com,DIRECT
+- DOMAIN-SUFFIX,mi.com,DIRECT
+- DOMAIN-SUFFIX,miui.com,DIRECT
+- DOMAIN-SUFFIX,apple.com.cn,DIRECT
+- DOMAIN-SUFFIX,icloud.com.cn,DIRECT
+- DOMAIN-SUFFIX,iqiyi.com,DIRECT
+- DOMAIN-SUFFIX,youku.com,DIRECT
+- DOMAIN-SUFFIX,mgtv.com,DIRECT
+- DOMAIN-SUFFIX,douban.com,DIRECT
+- DOMAIN-SUFFIX,csdn.net,DIRECT
+- DOMAIN-SUFFIX,gitee.com,DIRECT
+- DOMAIN-SUFFIX,jianshu.com,DIRECT
+- DOMAIN-SUFFIX,58.com,DIRECT
+- DOMAIN-SUFFIX,pinduoduo.com,DIRECT
+- DOMAIN-SUFFIX,yangkeduo.com,DIRECT
+- DOMAIN-SUFFIX,suning.com,DIRECT
+- DOMAIN-SUFFIX,vip.com,DIRECT
+- DOMAIN-SUFFIX,amap.com,DIRECT
+- DOMAIN-SUFFIX,autonavi.com,DIRECT
+- DOMAIN-SUFFIX,umeng.com,DIRECT
+- DOMAIN-SUFFIX,cnzz.com,DIRECT
+- DOMAIN-SUFFIX,bing.com,DIRECT
+- DOMAIN-SUFFIX,microsoft.com,DIRECT
+- DOMAIN-SUFFIX,microsoftonline.com,DIRECT
+- DOMAIN-SUFFIX,microsoft365.com,DIRECT
+- DOMAIN-SUFFIX,office.com,DIRECT
+- DOMAIN-SUFFIX,office.net,DIRECT
+- DOMAIN-SUFFIX,live.com,DIRECT
+- DOMAIN-SUFFIX,windowsupdate.com,DIRECT
+- DOMAIN-SUFFIX,msn.com,DIRECT
+- DOMAIN-SUFFIX,apple.com,DIRECT
+- DOMAIN-SUFFIX,icloud.com,DIRECT
+- MATCH,PROXY
