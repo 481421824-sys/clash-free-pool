@@ -104,9 +104,9 @@ proxies:
 proxy-groups:
 - name: 住宅优先
   type: fallback
-  url: https://cp.cloudflare.com/generate_204
-  interval: 90
-  timeout: 5000
+  url: http://www.gstatic.com/generate_204
+  interval: 120
+  timeout: 10000
   proxies:
   - 住宅-01-KR
   - 住宅-02-US
@@ -128,10 +128,10 @@ proxy-groups:
 - name: PROXY
   type: select
   proxies:
+  - 06-hysteria-156k
   - 01-hysteria2-2245k
   - 02-vless-1643k
   - 03-hysteria2-1249k
-  - 06-hysteria-156k
   - Fastest
   - 住宅优先
   - 住宅轮换
@@ -146,10 +146,10 @@ proxy-groups:
   url: https://cp.cloudflare.com/generate_204
   interval: 120
   proxies:
+  - 06-hysteria-156k
   - 01-hysteria2-2245k
   - 02-vless-1643k
   - 03-hysteria2-1249k
-  - 06-hysteria-156k
 rules:
 - DOMAIN-SUFFIX,openai.com,住宅优先
 - DOMAIN-SUFFIX,chatgpt.com,住宅优先
