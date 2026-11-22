@@ -15,16 +15,7 @@ proxies:
   skip-cert-verify: true
   _city: Pohang
   _isp: Korea Telecom
-- name: 住宅-02-US
-  type: socks5
-  server: 184.178.172.25
-  port: 15291
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Roanoke
-  _isp: Cox Communications Inc.
-- name: 住宅-03-KR
+- name: 住宅-02-KR
   type: socks5
   server: 121.169.46.116
   port: 1090
@@ -33,6 +24,15 @@ proxies:
   skip-cert-verify: true
   _city: Suwon
   _isp: Korea Telecom
+- name: 住宅-03-US
+  type: socks5
+  server: 184.178.172.18
+  port: 15280
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Roanoke
+  _isp: Cox Communications Inc.
 - name: 住宅-04-US
   type: socks5
   server: 174.75.211.193
@@ -53,8 +53,8 @@ proxies:
   _isp: Cox Communications Inc.
 - name: 住宅-06-US
   type: socks5
-  server: 184.178.172.18
-  port: 15280
+  server: 184.178.172.25
+  port: 15291
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
@@ -139,8 +139,8 @@ proxy-groups:
   timeout: 10000
   proxies:
   - 住宅-01-KR
-  - 住宅-02-US
-  - 住宅-03-KR
+  - 住宅-02-KR
+  - 住宅-03-US
   - 住宅-04-US
   - 住宅-05-US
   - 住宅-06-US
@@ -150,8 +150,8 @@ proxy-groups:
   type: select
   proxies:
   - 住宅-01-KR
-  - 住宅-02-US
-  - 住宅-03-KR
+  - 住宅-02-KR
+  - 住宅-03-US
   - 住宅-04-US
   - 住宅-05-US
   - 住宅-06-US
@@ -169,8 +169,8 @@ proxy-groups:
   - 住宅优先
   - 住宅轮换
   - 住宅-01-KR
-  - 住宅-02-US
-  - 住宅-03-KR
+  - 住宅-02-KR
+  - 住宅-03-US
   - 住宅-04-US
   - 住宅-05-US
   - 住宅-06-US
