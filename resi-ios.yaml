@@ -122,7 +122,6 @@ proxy-groups:
   - 住宅-05-XX
   - 住宅-06-XX
   - 住宅-07-US
-  - 已购-Astound
 - name: 住宅轮换
   type: select
   proxies:
