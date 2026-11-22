@@ -13,41 +13,53 @@ proxies:
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-- name: 住宅-02-XX
-  type: socks5
-  server: 72.195.34.35
-  port: 27360
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-- name: 住宅-03-US
-  type: socks5
-  server: 174.75.211.193
-  port: 4145
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-- name: 住宅-04-US
-  type: socks5
-  server: 70.166.167.55
-  port: 57745
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-- name: 住宅-05-XX
-  type: socks5
-  server: 184.178.172.18
-  port: 15280
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-- name: 住宅-06-XX
+  _city: Pensacola
+  _isp: Cox Communications Inc.
+- name: 住宅-02-US
   type: socks5
   server: 184.178.172.25
   port: 15291
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
+  _city: Roanoke
+  _isp: Cox Communications Inc.
+- name: 住宅-03-US
+  type: socks5
+  server: 184.178.172.18
+  port: 15280
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Roanoke
+  _isp: Cox Communications Inc.
+- name: 住宅-04-US
+  type: socks5
+  server: 184.185.2.12
+  port: 4145
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Pensacola
+  _isp: Cox Communications Inc.
+- name: 住宅-05-US
+  type: socks5
+  server: 70.166.167.55
+  port: 57745
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Pensacola
+  _isp: Cox Communications Inc.
+- name: 住宅-06-US
+  type: socks5
+  server: 174.75.211.193
+  port: 4145
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Pensacola
+  _isp: Cox Communications Inc.
 - name: 住宅-07-US
   type: socks5
   server: 70.166.167.38
@@ -55,13 +67,17 @@ proxies:
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
+  _city: Pensacola
+  _isp: Cox Communications Inc.
 - name: 住宅-08-US
   type: socks5
-  server: 184.185.2.12
-  port: 4145
+  server: 72.195.34.35
+  port: 27360
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
+  _city: Irvine
+  _isp: Cox Communications Inc.
 - name: 已购-Astound
   type: socks5
   server: 89.47.127.47
@@ -123,22 +139,22 @@ proxy-groups:
   timeout: 10000
   proxies:
   - 住宅-01-US
-  - 住宅-02-XX
+  - 住宅-02-US
   - 住宅-03-US
   - 住宅-04-US
-  - 住宅-05-XX
-  - 住宅-06-XX
+  - 住宅-05-US
+  - 住宅-06-US
   - 住宅-07-US
   - 住宅-08-US
 - name: 住宅轮换
   type: select
   proxies:
   - 住宅-01-US
-  - 住宅-02-XX
+  - 住宅-02-US
   - 住宅-03-US
   - 住宅-04-US
-  - 住宅-05-XX
-  - 住宅-06-XX
+  - 住宅-05-US
+  - 住宅-06-US
   - 住宅-07-US
   - 住宅-08-US
   - DIRECT
@@ -153,11 +169,11 @@ proxy-groups:
   - 住宅优先
   - 住宅轮换
   - 住宅-01-US
-  - 住宅-02-XX
+  - 住宅-02-US
   - 住宅-03-US
   - 住宅-04-US
-  - 住宅-05-XX
-  - 住宅-06-XX
+  - 住宅-05-US
+  - 住宅-06-US
   - 住宅-07-US
   - 住宅-08-US
 - name: Fastest
