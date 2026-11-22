@@ -17,12 +17,12 @@ proxies:
   _isp: Korea Telecom
 - name: 住宅-02-US
   type: socks5
-  server: 184.185.2.12
-  port: 4145
+  server: 72.195.34.35
+  port: 27360
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-  _city: Pensacola
+  _city: Irvine
   _isp: Cox Communications Inc.
 - name: 住宅-03-US
   type: socks5
@@ -35,8 +35,8 @@ proxies:
   _isp: Cox Communications Inc.
 - name: 住宅-04-US
   type: socks5
-  server: 174.75.211.193
-  port: 4145
+  server: 98.178.72.21
+  port: 10919
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
@@ -44,14 +44,23 @@ proxies:
   _isp: Cox Communications Inc.
 - name: 住宅-05-US
   type: socks5
-  server: 72.195.34.35
-  port: 27360
+  server: 184.185.2.12
+  port: 4145
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-  _city: Irvine
+  _city: Pensacola
   _isp: Cox Communications Inc.
-- name: 住宅-06-US
+- name: 住宅-06-CN
+  type: socks5
+  server: 113.249.111.67
+  port: 1080
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Chongqing
+  _isp: Chongqing Telecom
+- name: 住宅-07-US
   type: socks5
   server: 184.178.172.18
   port: 15280
@@ -60,19 +69,10 @@ proxies:
   skip-cert-verify: true
   _city: Roanoke
   _isp: Cox Communications Inc.
-- name: 住宅-07-NL
-  type: socks5
-  server: 109.111.179.214
-  port: 10808
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Orem
-  _isp: Ace Data Centers II, L.L.C.
 - name: 住宅-08-US
   type: socks5
-  server: 98.178.72.21
-  port: 10919
+  server: 174.75.211.193
+  port: 4145
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
@@ -143,8 +143,8 @@ proxy-groups:
   - 住宅-03-US
   - 住宅-04-US
   - 住宅-05-US
-  - 住宅-06-US
-  - 住宅-07-NL
+  - 住宅-06-CN
+  - 住宅-07-US
   - 住宅-08-US
 - name: 住宅轮换
   type: select
@@ -154,8 +154,8 @@ proxy-groups:
   - 住宅-03-US
   - 住宅-04-US
   - 住宅-05-US
-  - 住宅-06-US
-  - 住宅-07-NL
+  - 住宅-06-CN
+  - 住宅-07-US
   - 住宅-08-US
   - DIRECT
 - name: PROXY
@@ -173,8 +173,8 @@ proxy-groups:
   - 住宅-03-US
   - 住宅-04-US
   - 住宅-05-US
-  - 住宅-06-US
-  - 住宅-07-NL
+  - 住宅-06-CN
+  - 住宅-07-US
   - 住宅-08-US
 - name: Fastest
   type: fallback
