@@ -8,49 +8,56 @@ tcp-concurrent: true
 proxies:
 - name: 住宅-01-US
   type: socks5
-  server: 174.77.111.197
+  server: 184.178.172.14
   port: 4145
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-- name: 住宅-02-US
+- name: 住宅-02-VN
   type: socks5
-  server: 184.182.240.211
-  port: 4145
+  server: 45.74.31.41
+  port: 4235
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
 - name: 住宅-03-US
   type: socks5
-  server: 184.178.172.5
-  port: 15303
+  server: 98.178.72.21
+  port: 10919
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
 - name: 住宅-04-US
   type: socks5
-  server: 184.185.2.12
-  port: 4145
+  server: 184.178.172.18
+  port: 15280
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-- name: 住宅-05-US
+- name: 住宅-05-KR
   type: socks5
-  server: 70.166.167.55
-  port: 57745
+  server: 183.106.215.208
+  port: 1080
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
 - name: 住宅-06-US
   type: socks5
-  server: 70.166.65.160
-  port: 4145
+  server: 184.178.172.25
+  port: 15291
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-- name: 住宅-07-US
+- name: 住宅-07-XX
   type: socks5
-  server: 98.181.137.83
+  server: 45.74.31.42
+  port: 4073
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+- name: 住宅-08-US
+  type: socks5
+  server: 70.166.65.160
   port: 4145
   udp: false
   remote-dns-resolve: true
@@ -116,22 +123,24 @@ proxy-groups:
   timeout: 10000
   proxies:
   - 住宅-01-US
-  - 住宅-02-US
+  - 住宅-02-VN
   - 住宅-03-US
   - 住宅-04-US
-  - 住宅-05-US
+  - 住宅-05-KR
   - 住宅-06-US
-  - 住宅-07-US
+  - 住宅-07-XX
+  - 住宅-08-US
 - name: 住宅轮换
   type: select
   proxies:
   - 住宅-01-US
-  - 住宅-02-US
+  - 住宅-02-VN
   - 住宅-03-US
   - 住宅-04-US
-  - 住宅-05-US
+  - 住宅-05-KR
   - 住宅-06-US
-  - 住宅-07-US
+  - 住宅-07-XX
+  - 住宅-08-US
   - DIRECT
 - name: PROXY
   type: select
@@ -144,12 +153,13 @@ proxy-groups:
   - 住宅优先
   - 住宅轮换
   - 住宅-01-US
-  - 住宅-02-US
+  - 住宅-02-VN
   - 住宅-03-US
   - 住宅-04-US
-  - 住宅-05-US
+  - 住宅-05-KR
   - 住宅-06-US
-  - 住宅-07-US
+  - 住宅-07-XX
+  - 住宅-08-US
 - name: Fastest
   type: fallback
   url: https://cp.cloudflare.com/generate_204
