@@ -6,30 +6,30 @@ ipv6: false
 unified-delay: true
 tcp-concurrent: true
 proxies:
-- name: 住宅-01-KR
+- name: 住宅-01-US
   type: socks5
-  server: 183.106.215.208
-  port: 1080
+  server: 174.64.199.82
+  port: 4145
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-- name: 住宅-02-KR
-  type: socks5
-  server: 121.169.46.116
-  port: 1090
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-- name: 住宅-03-US
+- name: 住宅-02-US
   type: socks5
   server: 184.178.172.25
   port: 15291
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
+- name: 住宅-03-US
+  type: socks5
+  server: 70.166.167.55
+  port: 57745
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
 - name: 住宅-04-US
   type: socks5
-  server: 98.181.137.80
+  server: 70.166.65.160
   port: 4145
   udp: false
   remote-dns-resolve: true
@@ -50,14 +50,14 @@ proxies:
   skip-cert-verify: true
 - name: 住宅-07-US
   type: socks5
-  server: 70.166.167.55
-  port: 57745
+  server: 184.178.172.18
+  port: 15280
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
 - name: 住宅-08-US
   type: socks5
-  server: 174.77.111.197
+  server: 98.181.137.80
   port: 4145
   udp: false
   remote-dns-resolve: true
@@ -119,8 +119,8 @@ proxy-groups:
 - name: 住宅优先
   type: select
   proxies:
-  - 住宅-01-KR
-  - 住宅-02-KR
+  - 住宅-01-US
+  - 住宅-02-US
   - 住宅-03-US
   - 住宅-04-US
   - 住宅-05-US
@@ -132,8 +132,8 @@ proxy-groups:
 - name: 住宅轮换
   type: select
   proxies:
-  - 住宅-01-KR
-  - 住宅-02-KR
+  - 住宅-01-US
+  - 住宅-02-US
   - 住宅-03-US
   - 住宅-04-US
   - 住宅-05-US
@@ -151,8 +151,8 @@ proxy-groups:
   - Fastest
   - 住宅优先
   - 住宅轮换
-  - 住宅-01-KR
-  - 住宅-02-KR
+  - 住宅-01-US
+  - 住宅-02-US
   - 住宅-03-US
   - 住宅-04-US
   - 住宅-05-US
