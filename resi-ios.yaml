@@ -8,57 +8,50 @@ tcp-concurrent: true
 proxies:
 - name: 住宅-01-US
   type: socks5
-  server: 121.169.46.116
-  port: 1090
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-- name: 住宅-02-US
-  type: socks5
-  server: 174.64.199.82
-  port: 4145
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-- name: 住宅-03-US
-  type: socks5
   server: 184.178.172.18
   port: 15280
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-- name: 住宅-04-US
-  type: socks5
-  server: 70.166.65.160
-  port: 4145
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-- name: 住宅-05-US
+- name: 住宅-02-US
   type: socks5
   server: 184.178.172.25
   port: 15291
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-- name: 住宅-06-US
+- name: 住宅-03-US
   type: socks5
   server: 184.182.240.211
   port: 4145
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-- name: 住宅-07-US
+- name: 住宅-04-US
   type: socks5
-  server: 45.74.31.46
-  port: 4147
+  server: 184.178.172.23
+  port: 4145
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-- name: 住宅-08-US
+- name: 住宅-05-US
   type: socks5
   server: 70.166.167.38
   port: 57728
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+- name: 住宅-06-US
+  type: socks5
+  server: 184.182.240.12
+  port: 4145
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+- name: 住宅-07-VN
+  type: socks5
+  server: 45.74.31.46
+  port: 4109
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
@@ -128,8 +121,7 @@ proxy-groups:
   - 住宅-04-US
   - 住宅-05-US
   - 住宅-06-US
-  - 住宅-07-US
-  - 住宅-08-US
+  - 住宅-07-VN
 - name: 住宅轮换
   type: select
   proxies:
@@ -139,8 +131,7 @@ proxy-groups:
   - 住宅-04-US
   - 住宅-05-US
   - 住宅-06-US
-  - 住宅-07-US
-  - 住宅-08-US
+  - 住宅-07-VN
   - DIRECT
 - name: PROXY
   type: select
@@ -158,8 +149,7 @@ proxy-groups:
   - 住宅-04-US
   - 住宅-05-US
   - 住宅-06-US
-  - 住宅-07-US
-  - 住宅-08-US
+  - 住宅-07-VN
 - name: Fastest
   type: fallback
   url: https://cp.cloudflare.com/generate_204
