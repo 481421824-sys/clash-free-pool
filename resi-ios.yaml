@@ -17,15 +17,6 @@ proxies:
   _isp: Korea Telecom
 - name: 住宅-02-US
   type: socks5
-  server: 184.178.172.25
-  port: 15291
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Roanoke
-  _isp: Cox Communications Inc.
-- name: 住宅-03-US
-  type: socks5
   server: 72.195.34.35
   port: 27360
   udp: false
@@ -33,16 +24,16 @@ proxies:
   skip-cert-verify: true
   _city: Irvine
   _isp: Cox Communications Inc.
-- name: 住宅-04-US
+- name: 住宅-03-US
   type: socks5
-  server: 174.75.211.193
-  port: 4145
+  server: 184.178.172.25
+  port: 15291
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-  _city: Pensacola
+  _city: Roanoke
   _isp: Cox Communications Inc.
-- name: 住宅-05-US
+- name: 住宅-04-US
   type: socks5
   server: 184.178.172.18
   port: 15280
@@ -51,7 +42,7 @@ proxies:
   skip-cert-verify: true
   _city: Roanoke
   _isp: Cox Communications Inc.
-- name: 住宅-06-KR
+- name: 住宅-05-KR
   type: socks5
   server: 121.169.46.116
   port: 1090
@@ -60,6 +51,15 @@ proxies:
   skip-cert-verify: true
   _city: Suwon
   _isp: Korea Telecom
+- name: 住宅-06-US
+  type: socks5
+  server: 174.75.211.193
+  port: 4145
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Pensacola
+  _isp: Cox Communications Inc.
 - name: 住宅-07-CN
   type: socks5
   server: 183.6.115.212
@@ -142,8 +142,8 @@ proxy-groups:
   - 住宅-02-US
   - 住宅-03-US
   - 住宅-04-US
-  - 住宅-05-US
-  - 住宅-06-KR
+  - 住宅-05-KR
+  - 住宅-06-US
   - 住宅-07-CN
   - 住宅-08-CN
 - name: 住宅轮换
@@ -153,8 +153,8 @@ proxy-groups:
   - 住宅-02-US
   - 住宅-03-US
   - 住宅-04-US
-  - 住宅-05-US
-  - 住宅-06-KR
+  - 住宅-05-KR
+  - 住宅-06-US
   - 住宅-07-CN
   - 住宅-08-CN
   - DIRECT
@@ -172,8 +172,8 @@ proxy-groups:
   - 住宅-02-US
   - 住宅-03-US
   - 住宅-04-US
-  - 住宅-05-US
-  - 住宅-06-KR
+  - 住宅-05-KR
+  - 住宅-06-US
   - 住宅-07-CN
   - 住宅-08-CN
 - name: Fastest
