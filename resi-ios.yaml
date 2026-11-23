@@ -26,15 +26,6 @@ proxies:
   _isp: Korea Telecom
 - name: 住宅-03-US
   type: socks5
-  server: 72.195.34.35
-  port: 27360
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Irvine
-  _isp: Cox Communications Inc.
-- name: 住宅-04-US
-  type: socks5
   server: 184.178.172.25
   port: 15291
   udp: false
@@ -42,7 +33,7 @@ proxies:
   skip-cert-verify: true
   _city: Roanoke
   _isp: Cox Communications Inc.
-- name: 住宅-05-US
+- name: 住宅-04-US
   type: socks5
   server: 174.75.211.193
   port: 4145
@@ -50,6 +41,15 @@ proxies:
   remote-dns-resolve: true
   skip-cert-verify: true
   _city: Pensacola
+  _isp: Cox Communications Inc.
+- name: 住宅-05-US
+  type: socks5
+  server: 184.178.172.18
+  port: 15280
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Roanoke
   _isp: Cox Communications Inc.
 - name: 住宅-06-CN
   type: socks5
@@ -71,12 +71,12 @@ proxies:
   _isp: Chongqing Telecom
 - name: 住宅-08-US
   type: socks5
-  server: 184.178.172.18
-  port: 15280
+  server: 72.195.34.35
+  port: 27360
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-  _city: Roanoke
+  _city: Irvine
   _isp: Cox Communications Inc.
 - name: 已购-Astound
   type: socks5
