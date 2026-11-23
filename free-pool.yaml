@@ -31,81 +31,6 @@ dns:
   - 223.5.5.5
   - 119.29.29.29
 proxies:
-- server: 189.24.82.30
-  port: 443
-  type: vless
-  uuid: b354463f-ac84-422e-9a26-556c81ba001c
-  tls: true
-  tfo: false
-  flow: xtls-rprx-vision
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 77HTpkO_F3cUfA5Trka3eSh8V18atRMLyclGqZ__8C8
-    short-id: b73c53b18b65dd90
-  servername: www.apple.com
-  client-fingerprint: chrome
-  network: tcp
-  udp: true
-  name: 01-vless-1338k
-- server: 47.80.76.105
-  port: 443
-  type: vless
-  uuid: ecdcc5d3-644a-4606-9e9e-130315da68cd
-  tls: true
-  tfo: false
-  flow: xtls-rprx-vision
-  skip-cert-verify: true
-  reality-opts:
-    public-key: T7_XLYoPP1_kxIaOov9SovRMk-P1mS-FRhdWueHxaR0
-    short-id: 58aa532948cab4a4
-  servername: www.amazon.com
-  client-fingerprint: chrome
-  network: tcp
-  udp: true
-  name: 02-vless-1311k
-- type: vmess
-  network: ws
-  server: d1eyz.xiaoyan.io
-  port: 16617
-  uuid: 904f0569-8695-466f-97cf-0de2face1b46
-  skip-cert-verify: true
-  alterId: 0
-  cipher: auto
-  ws-opts:
-    headers:
-      Host: f9309cc88637c26f552a1a64fb311cae.mobgslb.tbcache.com
-    path: /
-  name: 03-vmess-1809k
-- server: 168.119.190.106
-  port: 443
-  type: vless
-  uuid: 45f7bbfe-7d9c-49e1-81f3-154c0cd40121
-  tls: false
-  encryption: mlkem768x25519plus.random.0rtt.swY_aKEuuHUHKO0BHVV2uot-UFbtrXpLWr7g8uZk0xk
-  network: http
-  http-opts:
-    method: GET
-    path:
-    - /
-    headers:
-      Host:
-      - www.upwork.com
-  udp: true
-  name: 04-vless-1229k
-- type: hysteria
-  server: 38.6.222.131
-  port: 11008
-  password: dongtaiwang.com
-  tls: true
-  servername: bing.com
-  sni: bing.com
-  skip-cert-verify: true
-  alpn:
-  - h3
-  up: '11'
-  down: '55'
-  auth-str: dongtaiwang.com
-  name: 05-hysteria-1089k
 - type: hysteria
   server: 38.6.222.132
   port: 11008
@@ -119,17 +44,57 @@ proxies:
   up: '11'
   down: '55'
   auth-str: dongtaiwang.com
-  name: 06-hysteria-1050k
+  name: 01-hysteria-1098k
+- type: hysteria
+  server: 38.6.222.131
+  port: 11008
+  password: dongtaiwang.com
+  tls: true
+  servername: bing.com
+  sni: bing.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  up: '11'
+  down: '55'
+  auth-str: dongtaiwang.com
+  name: 02-hysteria-1096k
+- server: swo2.nexfile.net
+  port: 4443
+  type: vless
+  uuid: a35c508f-4d5d-4531-842e-6e9d43c762c0
+  tls: true
+  servername: swo2.nexfile.net
+  client-fingerprint: chrome
+  network: xhttp
+  xhttp-opts:
+    path: /api/v1/sync/
+    host: swo2.nexfile.net
+    mode: auto
+  udp: true
+  name: 03-vless-1055k
+- type: hysteria
+  server: 137.175.82.41
+  port: 20022
+  password: dongtaiwang.com
+  tls: true
+  servername: bing.com
+  sni: bing.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  up: '11'
+  down: '55'
+  auth-str: dongtaiwang.com
+  name: 04-hysteria-403k
 proxy-groups:
 - name: PROXY
   type: select
   proxies:
-  - 01-vless-1338k
-  - 02-vless-1311k
-  - 03-vmess-1809k
-  - 04-vless-1229k
-  - 05-hysteria-1089k
-  - 06-hysteria-1050k
+  - 01-hysteria-1098k
+  - 02-hysteria-1096k
+  - 03-vless-1055k
+  - 04-hysteria-403k
   - Fastest
   - Auto
   - LB
@@ -138,35 +103,29 @@ proxy-groups:
   url: https://www.google.com/generate_204
   interval: 120
   proxies:
-  - 01-vless-1338k
-  - 02-vless-1311k
-  - 03-vmess-1809k
-  - 04-vless-1229k
-  - 05-hysteria-1089k
-  - 06-hysteria-1050k
+  - 01-hysteria-1098k
+  - 02-hysteria-1096k
+  - 03-vless-1055k
+  - 04-hysteria-403k
 - name: Auto
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 01-vless-1338k
-  - 02-vless-1311k
-  - 03-vmess-1809k
-  - 04-vless-1229k
-  - 05-hysteria-1089k
-  - 06-hysteria-1050k
+  - 01-hysteria-1098k
+  - 02-hysteria-1096k
+  - 03-vless-1055k
+  - 04-hysteria-403k
   tolerance: 50
 - name: LB
   type: load-balance
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 01-vless-1338k
-  - 02-vless-1311k
-  - 03-vmess-1809k
-  - 04-vless-1229k
-  - 05-hysteria-1089k
-  - 06-hysteria-1050k
+  - 01-hysteria-1098k
+  - 02-hysteria-1096k
+  - 03-vless-1055k
+  - 04-hysteria-403k
   strategy: round-robin
 rules:
 - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
