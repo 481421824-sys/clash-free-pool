@@ -8,41 +8,14 @@ tcp-concurrent: true
 proxies:
 - name: 住宅-01-KR
   type: socks5
-  server: 121.169.46.116
-  port: 1090
+  server: 183.106.215.208
+  port: 1080
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-  _city: Suwon
+  _city: Pohang
   _isp: Korea Telecom
 - name: 住宅-02-US
-  type: socks5
-  server: 184.178.172.25
-  port: 15291
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Roanoke
-  _isp: Cox Communications Inc.
-- name: 住宅-03-US
-  type: socks5
-  server: 72.195.34.35
-  port: 27360
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Irvine
-  _isp: Cox Communications Inc.
-- name: 住宅-04-US
-  type: socks5
-  server: 184.178.172.18
-  port: 15280
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Roanoke
-  _isp: Cox Communications Inc.
-- name: 住宅-05-US
   type: socks5
   server: 174.75.211.193
   port: 4145
@@ -51,16 +24,34 @@ proxies:
   skip-cert-verify: true
   _city: Pensacola
   _isp: Cox Communications Inc.
-- name: 住宅-06-KR
+- name: 住宅-03-US
   type: socks5
-  server: 183.106.215.208
-  port: 1080
+  server: 184.178.172.25
+  port: 15291
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-  _city: Pohang
+  _city: Roanoke
+  _isp: Cox Communications Inc.
+- name: 住宅-04-KR
+  type: socks5
+  server: 121.169.46.116
+  port: 1090
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Suwon
   _isp: Korea Telecom
-- name: 住宅-07-CN
+- name: 住宅-05-US
+  type: socks5
+  server: 72.195.34.35
+  port: 27360
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Irvine
+  _isp: Cox Communications Inc.
+- name: 住宅-06-CN
   type: socks5
   server: 183.6.115.212
   port: 19450
@@ -69,7 +60,7 @@ proxies:
   skip-cert-verify: true
   _city: Guangzhou
   _isp: Chinanet
-- name: 住宅-08-CN
+- name: 住宅-07-CN
   type: socks5
   server: 113.249.111.67
   port: 1080
@@ -78,6 +69,15 @@ proxies:
   skip-cert-verify: true
   _city: Chongqing
   _isp: Chongqing Telecom
+- name: 住宅-08-US
+  type: socks5
+  server: 184.178.172.18
+  port: 15280
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Roanoke
+  _isp: Cox Communications Inc.
 - name: 已购-Astound
   type: socks5
   server: 89.47.127.47
@@ -141,22 +141,22 @@ proxy-groups:
   - 住宅-01-KR
   - 住宅-02-US
   - 住宅-03-US
-  - 住宅-04-US
+  - 住宅-04-KR
   - 住宅-05-US
-  - 住宅-06-KR
+  - 住宅-06-CN
   - 住宅-07-CN
-  - 住宅-08-CN
+  - 住宅-08-US
 - name: 住宅轮换
   type: select
   proxies:
   - 住宅-01-KR
   - 住宅-02-US
   - 住宅-03-US
-  - 住宅-04-US
+  - 住宅-04-KR
   - 住宅-05-US
-  - 住宅-06-KR
+  - 住宅-06-CN
   - 住宅-07-CN
-  - 住宅-08-CN
+  - 住宅-08-US
   - DIRECT
 - name: PROXY
   type: select
@@ -171,11 +171,11 @@ proxy-groups:
   - 住宅-01-KR
   - 住宅-02-US
   - 住宅-03-US
-  - 住宅-04-US
+  - 住宅-04-KR
   - 住宅-05-US
-  - 住宅-06-KR
+  - 住宅-06-CN
   - 住宅-07-CN
-  - 住宅-08-CN
+  - 住宅-08-US
 - name: Fastest
   type: fallback
   url: https://cp.cloudflare.com/generate_204
