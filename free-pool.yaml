@@ -44,21 +44,7 @@ proxies:
   up: '11'
   down: '55'
   auth-str: dongtaiwang.com
-  name: 01-hysteria-1221k
-- type: hysteria
-  server: 38.6.222.132
-  port: 11008
-  password: dongtaiwang.com
-  tls: true
-  servername: bing.com
-  sni: bing.com
-  skip-cert-verify: true
-  alpn:
-  - h3
-  up: '11'
-  down: '55'
-  auth-str: dongtaiwang.com
-  name: 02-hysteria-1146k
+  name: 01-hysteria-1280k
 - type: hysteria
   server: 137.175.82.41
   port: 20022
@@ -72,7 +58,30 @@ proxies:
   up: '11'
   down: '55'
   auth-str: dongtaiwang.com
-  name: 03-hysteria-1125k
+  name: 02-hysteria-1098k
+- port: 443
+  server: 172.64.68.89
+  skip-cert-verify: true
+  sub_tag: P002-260618
+  tls: true
+  type: http
+  udp: true
+  x-toolall-mihomo: true
+  name: 03-http-1576k
+- type: hysteria
+  server: 38.6.222.132
+  port: 11008
+  password: dongtaiwang.com
+  tls: true
+  servername: bing.com
+  sni: bing.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  up: '11'
+  down: '55'
+  auth-str: dongtaiwang.com
+  name: 04-hysteria-1045k
 - type: hysteria
   server: 38.6.222.131
   port: 11008
@@ -86,32 +95,24 @@ proxies:
   up: '11'
   down: '55'
   auth-str: dongtaiwang.com
-  name: 04-hysteria-1095k
-- port: 443
-  server: 172.64.68.89
-  skip-cert-verify: true
-  sub_tag: P002-260618
-  tls: true
-  type: http
-  udp: true
-  x-toolall-mihomo: true
-  name: 05-http-1517k
+  name: 05-hysteria-1038k
 - port: 443
   server: 172.64.69.89
   skip-cert-verify: true
   tls: true
   type: http
-  name: 06-http-1119k
+  udp: true
+  name: 06-http-1134k
 proxy-groups:
 - name: PROXY
   type: select
   proxies:
-  - 01-hysteria-1221k
-  - 02-hysteria-1146k
-  - 03-hysteria-1125k
-  - 04-hysteria-1095k
-  - 05-http-1517k
-  - 06-http-1119k
+  - 01-hysteria-1280k
+  - 02-hysteria-1098k
+  - 03-http-1576k
+  - 04-hysteria-1045k
+  - 05-hysteria-1038k
+  - 06-http-1134k
   - Fastest
   - Auto
   - LB
@@ -120,35 +121,35 @@ proxy-groups:
   url: https://www.google.com/generate_204
   interval: 120
   proxies:
-  - 01-hysteria-1221k
-  - 02-hysteria-1146k
-  - 03-hysteria-1125k
-  - 04-hysteria-1095k
-  - 05-http-1517k
-  - 06-http-1119k
+  - 01-hysteria-1280k
+  - 02-hysteria-1098k
+  - 03-http-1576k
+  - 04-hysteria-1045k
+  - 05-hysteria-1038k
+  - 06-http-1134k
 - name: Auto
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 01-hysteria-1221k
-  - 02-hysteria-1146k
-  - 03-hysteria-1125k
-  - 04-hysteria-1095k
-  - 05-http-1517k
-  - 06-http-1119k
+  - 01-hysteria-1280k
+  - 02-hysteria-1098k
+  - 03-http-1576k
+  - 04-hysteria-1045k
+  - 05-hysteria-1038k
+  - 06-http-1134k
   tolerance: 50
 - name: LB
   type: load-balance
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 01-hysteria-1221k
-  - 02-hysteria-1146k
-  - 03-hysteria-1125k
-  - 04-hysteria-1095k
-  - 05-http-1517k
-  - 06-http-1119k
+  - 01-hysteria-1280k
+  - 02-hysteria-1098k
+  - 03-http-1576k
+  - 04-hysteria-1045k
+  - 05-hysteria-1038k
+  - 06-http-1134k
   strategy: round-robin
 rules:
 - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
