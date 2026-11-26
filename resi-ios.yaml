@@ -8,24 +8,6 @@ tcp-concurrent: true
 proxies:
 - name: 住宅-01-US
   type: socks5
-  server: 70.166.167.55
-  port: 57745
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Pensacola
-  _isp: Cox Communications Inc.
-- name: 住宅-02-US
-  type: socks5
-  server: 184.181.217.194
-  port: 4145
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Pensacola
-  _isp: Cox Communications Inc.
-- name: 住宅-03-US
-  type: socks5
   server: 184.178.172.18
   port: 15280
   udp: false
@@ -33,16 +15,7 @@ proxies:
   skip-cert-verify: true
   _city: Roanoke
   _isp: Cox Communications Inc.
-- name: 住宅-04-US
-  type: socks5
-  server: 72.194.42.156
-  port: 4145
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Oklahoma City
-  _isp: Cox Communications Inc
-- name: 住宅-05-US
+- name: 住宅-02-US
   type: socks5
   server: 70.166.65.160
   port: 4145
@@ -51,9 +24,9 @@ proxies:
   skip-cert-verify: true
   _city: Roanoke
   _isp: Cox Communications Inc.
-- name: 住宅-06-US
+- name: 住宅-03-US
   type: socks5
-  server: 174.75.211.193
+  server: 184.181.217.194
   port: 4145
   udp: false
   remote-dns-resolve: true
@@ -78,18 +51,12 @@ proxy-groups:
   - 住宅-01-US
   - 住宅-02-US
   - 住宅-03-US
-  - 住宅-04-US
-  - 住宅-05-US
-  - 住宅-06-US
 - name: 住宅轮换
   type: select
   proxies:
   - 住宅-01-US
   - 住宅-02-US
   - 住宅-03-US
-  - 住宅-04-US
-  - 住宅-05-US
-  - 住宅-06-US
   - DIRECT
 - name: PROXY
   type: select
@@ -101,9 +68,6 @@ proxy-groups:
   - 住宅-01-US
   - 住宅-02-US
   - 住宅-03-US
-  - 住宅-04-US
-  - 住宅-05-US
-  - 住宅-06-US
 - name: Fastest
   type: fallback
   url: https://cp.cloudflare.com/generate_204
