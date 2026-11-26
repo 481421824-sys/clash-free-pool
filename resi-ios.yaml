@@ -8,32 +8,14 @@ tcp-concurrent: true
 proxies:
 - name: 住宅-01-US
   type: socks5
-  server: 72.195.34.59
+  server: 174.75.211.193
   port: 4145
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-  _city: Irvine
+  _city: Pensacola
   _isp: Cox Communications Inc.
 - name: 住宅-02-US
-  type: socks5
-  server: 184.178.172.18
-  port: 15280
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Roanoke
-  _isp: Cox Communications Inc.
-- name: 住宅-03-US
-  type: socks5
-  server: 72.195.34.35
-  port: 27360
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Irvine
-  _isp: Cox Communications Inc.
-- name: 住宅-04-US
   type: socks5
   server: 184.178.172.25
   port: 15291
@@ -42,25 +24,34 @@ proxies:
   skip-cert-verify: true
   _city: Roanoke
   _isp: Cox Communications Inc.
+- name: 住宅-03-US
+  type: socks5
+  server: 184.178.172.18
+  port: 15280
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Roanoke
+  _isp: Cox Communications Inc.
+- name: 住宅-04-US
+  type: socks5
+  server: 72.195.34.35
+  port: 27360
+  udp: false
+  remote-dns-resolve: true
+  skip-cert-verify: true
+  _city: Irvine
+  _isp: Cox Communications Inc.
 - name: 住宅-05-US
   type: socks5
-  server: 184.185.2.12
+  server: 72.195.34.59
   port: 4145
   udp: false
   remote-dns-resolve: true
   skip-cert-verify: true
-  _city: Pensacola
+  _city: Irvine
   _isp: Cox Communications Inc.
 - name: 住宅-06-US
-  type: socks5
-  server: 174.75.211.193
-  port: 4145
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Pensacola
-  _isp: Cox Communications Inc.
-- name: 住宅-07-US
   type: socks5
   server: 184.182.240.211
   port: 4145
@@ -68,15 +59,6 @@ proxies:
   remote-dns-resolve: true
   skip-cert-verify: true
   _city: Macon
-  _isp: Cox Communications Inc.
-- name: 住宅-08-US
-  type: socks5
-  server: 72.195.34.41
-  port: 4145
-  udp: false
-  remote-dns-resolve: true
-  skip-cert-verify: true
-  _city: Irvine
   _isp: Cox Communications Inc.
 - name: 已购-Astound
   type: socks5
@@ -86,37 +68,6 @@ proxies:
   password: mohkde2n
   udp: false
   skip-cert-verify: true
-- server: 103.88.243.142
-  port: 11592
-  type: hysteria2
-  password: 41edb44c8e
-  auth: 41edb44c8e
-  sni: srv-17e124.21freedom.net
-  skip-cert-verify: true
-  name: 01-hysteria2-2245k
-- alpn:
-  - h2
-  client-fingerprint: firefox
-  grpc-opts:
-    grpc-mode: gun
-    grpc-service-name: mobile.api.Event
-  network: grpc
-  port: 443
-  server: vps3.nemnogogo.com
-  servername: vps3.nemnogogo.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
-  name: 02-vless-1643k
-- server: srv-17e124.21freedom.net
-  port: 11592
-  type: hysteria2
-  password: 41edb44c8e
-  auth: 41edb44c8e
-  sni: srv-17e124.21freedom.net
-  skip-cert-verify: true
-  name: 03-hysteria2-1249k
 - type: hysteria
   server: 62.210.124.132
   port: 24667
@@ -130,7 +81,65 @@ proxies:
   up: '11'
   down: '55'
   auth-str: dongtaiwang.com
-  name: 06-hysteria-156k
+  name: 01-hysteria-1280k
+- type: hysteria
+  server: 137.175.82.41
+  port: 20022
+  password: dongtaiwang.com
+  tls: true
+  servername: bing.com
+  sni: bing.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  up: '11'
+  down: '55'
+  auth-str: dongtaiwang.com
+  name: 02-hysteria-1098k
+- port: 443
+  server: 172.64.68.89
+  skip-cert-verify: true
+  sub_tag: P002-260618
+  tls: true
+  type: http
+  udp: true
+  x-toolall-mihomo: true
+  name: 03-http-1576k
+- type: hysteria
+  server: 38.6.222.132
+  port: 11008
+  password: dongtaiwang.com
+  tls: true
+  servername: bing.com
+  sni: bing.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  up: '11'
+  down: '55'
+  auth-str: dongtaiwang.com
+  name: 04-hysteria-1045k
+- type: hysteria
+  server: 38.6.222.131
+  port: 11008
+  password: dongtaiwang.com
+  tls: true
+  servername: bing.com
+  sni: bing.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  up: '11'
+  down: '55'
+  auth-str: dongtaiwang.com
+  name: 05-hysteria-1038k
+- port: 443
+  server: 172.64.69.89
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+  name: 06-http-1134k
 proxy-groups:
 - name: 住宅优先
   type: fallback
@@ -144,8 +153,6 @@ proxy-groups:
   - 住宅-04-US
   - 住宅-05-US
   - 住宅-06-US
-  - 住宅-07-US
-  - 住宅-08-US
 - name: 住宅轮换
   type: select
   proxies:
@@ -155,16 +162,14 @@ proxy-groups:
   - 住宅-04-US
   - 住宅-05-US
   - 住宅-06-US
-  - 住宅-07-US
-  - 住宅-08-US
   - DIRECT
 - name: PROXY
   type: select
   proxies:
-  - 06-hysteria-156k
-  - 01-hysteria2-2245k
-  - 02-vless-1643k
-  - 03-hysteria2-1249k
+  - 01-hysteria-1280k
+  - 02-hysteria-1098k
+  - 03-http-1576k
+  - 04-hysteria-1045k
   - Fastest
   - 住宅优先
   - 住宅轮换
@@ -174,17 +179,15 @@ proxy-groups:
   - 住宅-04-US
   - 住宅-05-US
   - 住宅-06-US
-  - 住宅-07-US
-  - 住宅-08-US
 - name: Fastest
   type: fallback
   url: https://cp.cloudflare.com/generate_204
   interval: 120
   proxies:
-  - 06-hysteria-156k
-  - 01-hysteria2-2245k
-  - 02-vless-1643k
-  - 03-hysteria2-1249k
+  - 01-hysteria-1280k
+  - 02-hysteria-1098k
+  - 03-http-1576k
+  - 04-hysteria-1045k
 rules:
 - DOMAIN-SUFFIX,openai.com,住宅优先
 - DOMAIN-SUFFIX,chatgpt.com,住宅优先
@@ -203,6 +206,19 @@ rules:
 - DOMAIN-SUFFIX,grok.com,住宅优先
 - DOMAIN-SUFFIX,gemini.google.com,住宅优先
 - DOMAIN-SUFFIX,aistudio.google.com,住宅优先
+- DOMAIN-SUFFIX,ip-api.com,住宅优先
+- DOMAIN-SUFFIX,ipinfo.io,住宅优先
+- DOMAIN-SUFFIX,ifconfig.me,住宅优先
+- DOMAIN-SUFFIX,api.ip.sb,住宅优先
+- DOMAIN-SUFFIX,ip.sb,住宅优先
+- DOMAIN-SUFFIX,ip.me,住宅优先
+- DOMAIN-SUFFIX,myip.ipip.net,住宅优先
+- DOMAIN-SUFFIX,ip138.com,住宅优先
+- DOMAIN-SUFFIX,ip.cn,住宅优先
+- DOMAIN-SUFFIX,ipip.net,住宅优先
+- DOMAIN-SUFFIX,ippure.com,住宅优先
+- DOMAIN-SUFFIX,whatismyipaddress.com,住宅优先
+- DOMAIN-SUFFIX,ipcheck.ing,住宅优先
 - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
 - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
 - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
